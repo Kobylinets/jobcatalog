@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'core/theme/app_theme.dart';
 import 'screens/auth/login_screen.dart';
+import 'screens/dashboard/dashboard_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,18 +16,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
+      // Загальна тема застосунку.
       theme: AppTheme.lightTheme,
 
-      // Початковий екран застосунку.
+      // Початковий екран авторизації.
       home: Builder(
         builder: (context) {
           return LoginScreen(
             onLogin: () {
-              // Демонстраційний перехід після входу.
+              // Демонстраційний перехід
+              // на новий дашборд після входу.
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute<void>(
                   builder: (context) =>
-                      const HomeScreen(),
+                      const DashboardScreen(),
                 ),
               );
             },
@@ -37,7 +41,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// Початковий головний екран із лабораторної №1.
+// Початковий екран з лабораторної роботи №1.
+// Залишаємо для збереження попередньої реалізації.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
