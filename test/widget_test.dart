@@ -1,30 +1,26 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:study_catalog/core/auth_validators.dart';
 
-import 'package:study_catalog/main.dart';
-
+// Замість стандартного тесту лічильника перевіряємо реальні валідатори.
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  test('email: порожнє поле і некоректний формат', () {
+    expect(AuthValidators.email(''), isNotNull);
+    expect(AuthValidators.email('wrong-email'), isNotNull);
+    expect(AuthValidators.email('test@example.com'), isNull);
+  });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  test('пароль: довжина щонайменше 6 символів', () {
+    expect(AuthValidators.newPassword('123'), isNotNull);
+    expect(AuthValidators.newPassword('123456'), isNull);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  test('підтвердження пароля має збігатися', () {
+    expect(AuthValidators.confirmation('123457', '123456'), isNotNull);
+    expect(AuthValidators.confirmation('123456', '123456'), isNull);
+  });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  test('ім’я користувача обов’язкове', () {
+    expect(AuthValidators.name('  '), isNotNull);
+    expect(AuthValidators.name('Іван'), isNull);
   });
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "138650635575",
+    "project_id": "jobcatal",
+    "storage_bucket": "jobcatal.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138650635575:android:2f137fb3976c28e843deb2",
+        "android_client_info": {
+          "package_name": "com.example.study_catalog"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0nF_dmVN7THufjEEovwZu4kvlR43GPPs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

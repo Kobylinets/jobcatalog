@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"ios":{"default":{"projectId":"jobcatal","appId":"1:138650635575:ios:be4163df4e3afb5243deb2","uploadDebugSymbols":true,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"jobcatal","configurations":{"ios":"1:138650635575:ios:be4163df4e3afb5243deb2"}}}}}}
