@@ -68,19 +68,26 @@ class _LoginScreenState extends State<LoginScreen> {
         onPressed: _isLoading
             ? null
             : () => showAppMessage(
-                  context,
-                  title: provider,
-                  message: 'Соціальний вхід поки демонстраційний. '
-                      'Для лабораторної №4 реалізовано Email/Password.',
-                ),
+                context,
+                title: provider,
+                message:
+                    'Соціальний вхід поки демонстраційний. '
+                    'Для лабораторної №4 реалізовано Email/Password.',
+              ),
         style: OutlinedButton.styleFrom(
           backgroundColor: Colors.white,
           side: const BorderSide(color: AppColors.border),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
         ),
         child: Text(
           text,
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: color),
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: color,
+          ),
         ),
       ),
     );
@@ -91,7 +98,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text('Job Catalog', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+        title: const Text(
+          'Job Catalog',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         foregroundColor: AppColors.textPrimary,
@@ -109,10 +119,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Вхід', style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, color: AppColors.textPrimary)),
+                    const Text(
+                      'Вхід',
+                      style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
                     const SizedBox(height: 10),
-                    const Text('Будь ласка, увійдіть у ваш зареєстрований акаунт',
-                        style: TextStyle(fontSize: 14, color: AppColors.textSecondary)),
+                    const Text(
+                      'Будь ласка, увійдіть у ваш зареєстрований акаунт',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
                     const SizedBox(height: 30),
                     AppTextField(
                       hintText: 'Електронна пошта',
@@ -134,20 +156,41 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     if (_isLoading) ...[
                       const SizedBox(height: 16),
-                      const Center(child: CircularProgressIndicator(color: AppColors.primary)),
+                      const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primary,
+                        ),
+                      ),
                     ],
                     const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Expanded(child: Text('Забули ваш пароль?', style: TextStyle(fontSize: 12, color: AppColors.textSecondary))),
+                        const Expanded(
+                          child: Text(
+                            'Забули ваш пароль?',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: AppColors.textSecondary,
+                            ),
+                          ),
+                        ),
                         TextButton(
                           onPressed: _isLoading
                               ? null
                               : () => Navigator.of(context).push(
-                                    MaterialPageRoute<void>(builder: (_) => const ForgotPasswordScreen()),
+                                  MaterialPageRoute<void>(
+                                    builder: (_) =>
+                                        const ForgotPasswordScreen(),
                                   ),
-                          child: const Text('Скинути пароль', style: TextStyle(fontSize: 12, color: AppColors.primary)),
+                                ),
+                          child: const Text(
+                            'Скинути пароль',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: AppColors.primary,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -157,7 +200,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         Expanded(child: Divider()),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 12),
-                          child: Text('Увійти за допомогою', style: TextStyle(fontSize: 12, color: AppColors.textSecondary)),
+                          child: Text(
+                            'Увійти за допомогою',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: AppColors.textSecondary,
+                            ),
+                          ),
                         ),
                         Expanded(child: Divider()),
                       ],
@@ -166,9 +215,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        _socialButton(text: 'G', color: const Color(0xFF4285F4), provider: 'Google'),
+                        _socialButton(
+                          text: 'G',
+                          color: const Color(0xFF4285F4),
+                          provider: 'Google',
+                        ),
                         const SizedBox(width: 20),
-                        _socialButton(text: 'f', color: const Color(0xFF1877F2), provider: 'Facebook'),
+                        _socialButton(
+                          text: 'f',
+                          color: const Color(0xFF1877F2),
+                          provider: 'Facebook',
+                        ),
                       ],
                     ),
                     const SizedBox(height: 38),
@@ -179,16 +236,25 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: _isLoading
                             ? null
                             : () => Navigator.of(context).push(
-                                  MaterialPageRoute<void>(builder: (_) => const RegisterScreen()),
+                                MaterialPageRoute<void>(
+                                  builder: (_) => const RegisterScreen(),
                                 ),
+                              ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFE5D9FF),
                           foregroundColor: AppColors.primary,
                           elevation: 0,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          ),
                         ),
-                        child: const Text('СТВОРИТИ АКАУНТ',
-                            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+                        child: const Text(
+                          'СТВОРИТИ АКАУНТ',
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ),
                     ),
                   ],

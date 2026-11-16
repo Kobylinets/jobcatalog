@@ -31,7 +31,10 @@ String authErrorMessage(Object error) {
     }
   }
   if (error is ArgumentError || error is StateError) {
-    return error.toString().replaceFirst(RegExp(r'^(Invalid argument\(s\)?: |Bad state: )'), '');
+    return error.toString().replaceFirst(
+      RegExp(r'^(Invalid argument\(s\)?: |Bad state: )'),
+      '',
+    );
   }
   return 'Не вдалося виконати дію. Спробуйте ще раз.';
 }

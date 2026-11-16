@@ -89,24 +89,44 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           color: const Color(0xFFE9DFFF),
                           borderRadius: BorderRadius.circular(50),
                         ),
-                        child: const Icon(Icons.lock_outline, color: AppColors.primary, size: 50),
+                        child: const Icon(
+                          Icons.lock_outline,
+                          color: AppColors.primary,
+                          size: 50,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 28),
                     const Center(
-                      child: Text('Захист акаунта',
-                          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.textPrimary)),
+                      child: Text(
+                        'Захист акаунта',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.textPrimary,
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 12),
                     const Center(
                       child: Text(
                         'Введіть поточний пароль, а потім новий пароль та його підтвердження.',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 14, height: 1.5, color: AppColors.textSecondary),
+                        style: TextStyle(
+                          fontSize: 14,
+                          height: 1.5,
+                          color: AppColors.textSecondary,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 35),
-                    const Text('Поточний пароль', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+                    const Text(
+                      'Поточний пароль',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     const SizedBox(height: 10),
                     AppTextField(
                       hintText: 'Введіть поточний пароль',
@@ -115,7 +135,13 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       validator: AuthValidators.loginPassword,
                     ),
                     const SizedBox(height: 22),
-                    const Text('Новий пароль', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+                    const Text(
+                      'Новий пароль',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     const SizedBox(height: 10),
                     AppTextField(
                       hintText: 'Введіть новий пароль',
@@ -124,13 +150,22 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       validator: AuthValidators.newPassword,
                     ),
                     const SizedBox(height: 22),
-                    const Text('Підтвердження нового пароля', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+                    const Text(
+                      'Підтвердження нового пароля',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     const SizedBox(height: 10),
                     AppTextField(
                       hintText: 'Повторіть новий пароль',
                       controller: _confirmController,
                       isPassword: true,
-                      validator: (value) => AuthValidators.confirmation(value, _newController.text),
+                      validator: (value) => AuthValidators.confirmation(
+                        value,
+                        _newController.text,
+                      ),
                     ),
                     const SizedBox(height: 35),
                     AppPrimaryButton(
@@ -140,12 +175,18 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     ),
                     if (_isLoading) ...[
                       const SizedBox(height: 16),
-                      const Center(child: CircularProgressIndicator(color: AppColors.primary)),
+                      const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primary,
+                        ),
+                      ),
                     ],
                     const SizedBox(height: 20),
                     Center(
                       child: TextButton.icon(
-                        onPressed: _isLoading ? null : () => Navigator.of(context).pop(),
+                        onPressed: _isLoading
+                            ? null
+                            : () => Navigator.of(context).pop(),
                         icon: const Icon(Icons.arrow_back, size: 18),
                         label: const Text('Повернутися до профілю'),
                       ),
@@ -167,7 +208,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                             child: Text(
                               'Firebase перевіряє поточний пароль, повторно підтверджує особу '
                               'та лише після цього змінює пароль.',
-                              style: TextStyle(fontSize: 12, height: 1.5, color: AppColors.textSecondary),
+                              style: TextStyle(
+                                fontSize: 12,
+                                height: 1.5,
+                                color: AppColors.textSecondary,
+                              ),
                             ),
                           ),
                         ],

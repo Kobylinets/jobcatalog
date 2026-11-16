@@ -48,7 +48,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  Future<void> _performAction(Future<void> Function() action, String success) async {
+  Future<void> _performAction(
+    Future<void> Function() action,
+    String success,
+  ) async {
     if (_isLoading) return;
     setState(() => _isLoading = true);
     try {
@@ -118,11 +121,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text('Оберіть аватар',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text(
+                'Оберіть аватар',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
               const SizedBox(height: 8),
-              const Text('Фото з готових HTTPS-посилань (за методичкою ЛР №4).',
-                  textAlign: TextAlign.center),
+              const Text(
+                'Фото з готових HTTPS-посилань (за методичкою ЛР №4).',
+                textAlign: TextAlign.center,
+              ),
               const SizedBox(height: 18),
               Wrap(
                 spacing: 16,
@@ -141,8 +148,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           width: 76,
                           height: 76,
                           fit: BoxFit.cover,
-                          errorBuilder: (_, _, _) =>
-                              const Icon(Icons.person, size: 42, color: AppColors.primary),
+                          errorBuilder: (_, _, _) => const Icon(
+                            Icons.person,
+                            size: 42,
+                            color: AppColors.primary,
+                          ),
                         ),
                       ),
                     ),
@@ -168,7 +178,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (dialogContext) => AlertDialog(
         title: const Text('Вийти з акаунта?'),
-        content: const Text('Після виходу для доступу до профілю потрібно буде увійти знову.'),
+        content: const Text(
+          'Після виходу для доступу до профілю потрібно буде увійти знову.',
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(dialogContext).pop(false),
@@ -191,7 +203,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       Navigator.of(context).popUntil((route) => route.isFirst);
     } catch (error) {
       if (!mounted) return;
-      await showAppMessage(context, title: 'Помилка виходу', message: authErrorMessage(error));
+      await showAppMessage(
+        context,
+        title: 'Помилка виходу',
+        message: authErrorMessage(error),
+      );
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -208,12 +224,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
       await showAppMessage(
         context,
         title: 'Тестову помилку зареєстровано',
-        message: 'Перевірте Firebase Console → Crashlytics → Issues. '
+        message:
+            'Перевірте Firebase Console → Crashlytics → Issues. '
             'Звіт може з’явитися з затримкою; іноді потрібен перезапуск застосунку.',
       );
     } catch (error) {
       if (!mounted) return;
-      await showAppMessage(context, title: 'Помилка Crashlytics', message: authErrorMessage(error));
+      await showAppMessage(
+        context,
+        title: 'Помилка Crashlytics',
+        message: authErrorMessage(error),
+      );
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -258,14 +279,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     valueColor: AlwaysStoppedAnimation<Color>(color),
                   ),
                 ),
-                Text('$percent%',
-                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppColors.textPrimary)),
+                Text(
+                  '$percent%',
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
               ],
             ),
           ),
           const SizedBox(height: 7),
-          Text(name, textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 12, color: AppColors.textPrimary)),
+          Text(
+            name,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 12, color: AppColors.textPrimary),
+          ),
         ],
       ),
     );
@@ -287,8 +317,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   width: 88,
                   height: 88,
                   fit: BoxFit.cover,
-                  errorBuilder: (_, _, _) =>
-                      const Icon(Icons.person, color: AppColors.primary, size: 57),
+                  errorBuilder: (_, _, _) => const Icon(
+                    Icons.person,
+                    color: AppColors.primary,
+                    size: 57,
+                  ),
                 ),
               ),
       ),
@@ -337,10 +370,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         height: 115,
                         decoration: const BoxDecoration(
                           color: Color(0xFF25212F),
-                          borderRadius: BorderRadius.vertical(top: Radius.circular(22)),
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(22),
+                          ),
                         ),
                         child: const Center(
-                          child: Icon(Icons.code, size: 65, color: AppColors.primaryLight),
+                          child: Icon(
+                            Icons.code,
+                            size: 65,
+                            color: AppColors.primaryLight,
+                          ),
                         ),
                       ),
                       Positioned(
@@ -355,14 +394,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Text(
                   name,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.textPrimary,
+                  ),
                 ),
                 const SizedBox(height: 5),
-                Text(email, textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 13, color: AppColors.textSecondary)),
+                Text(
+                  email,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
                 const SizedBox(height: 8),
-                const Text('Програміст',
-                    style: TextStyle(fontSize: 14, color: AppColors.textSecondary)),
+                const Text(
+                  'Програміст',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
                 const SizedBox(height: 16),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24),
@@ -371,7 +425,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     'Цікавлюся розробкою програмного забезпечення та сучасними '
                     'технологіями програмування.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 13, height: 1.5, color: AppColors.textSecondary),
+                    style: TextStyle(
+                      fontSize: 13,
+                      height: 1.5,
+                      color: AppColors.textSecondary,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 22),
@@ -425,15 +483,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       child: const Row(
                         children: [
-                          Icon(Icons.description_outlined, color: Colors.white, size: 30),
+                          Icon(
+                            Icons.description_outlined,
+                            color: Colors.white,
+                            size: 30,
+                          ),
                           SizedBox(width: 15),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Моє резюме', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+                                Text(
+                                  'Моє резюме',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                                 SizedBox(height: 4),
-                                Text('Файл: Resume.pdf', style: TextStyle(color: Colors.white70, fontSize: 12)),
+                                Text(
+                                  'Файл: Resume.pdf',
+                                  style: TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 12,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -448,8 +523,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text('Навички',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.textPrimary)),
+                    child: Text(
+                      'Навички',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 18),
@@ -485,7 +566,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       onPressed: _isLoading ? null : _signOut,
                       icon: const Icon(Icons.logout),
                       label: const Text('ВИЙТИ З АКАУНТА'),
-                      style: OutlinedButton.styleFrom(foregroundColor: AppColors.error),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: AppColors.error,
+                      ),
                     ),
                   ),
                 ),
@@ -526,8 +609,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
         },
         destinations: const [
           NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Дім'),
-          NavigationDestination(icon: Icon(Icons.calendar_month_outlined), label: 'Інтерв’ю'),
-          NavigationDestination(icon: Icon(Icons.mail_outline), label: 'Сповіщення'),
+          NavigationDestination(
+            icon: Icon(Icons.calendar_month_outlined),
+            label: 'Інтерв’ю',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.mail_outline),
+            label: 'Сповіщення',
+          ),
           NavigationDestination(
             icon: Icon(Icons.person_outline),
             selectedIcon: Icon(Icons.person, color: AppColors.primary),

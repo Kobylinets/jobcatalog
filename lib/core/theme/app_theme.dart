@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 // Кольорова палітра застосунку Job Catalog.
@@ -25,14 +24,15 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
 
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: AppColors.primary,
-        brightness: Brightness.light,
-      ).copyWith(
-        primary: AppColors.primary,
-        surface: AppColors.surface,
-        error: AppColors.error,
-      ),
+      colorScheme:
+          ColorScheme.fromSeed(
+            seedColor: AppColors.primary,
+            brightness: Brightness.light,
+          ).copyWith(
+            primary: AppColors.primary,
+            surface: AppColors.surface,
+            error: AppColors.error,
+          ),
 
       scaffoldBackgroundColor: AppColors.background,
 
@@ -55,15 +55,9 @@ class AppTheme {
           color: AppColors.textPrimary,
         ),
 
-        bodyMedium: TextStyle(
-          fontSize: 14,
-          color: AppColors.textPrimary,
-        ),
+        bodyMedium: TextStyle(fontSize: 14, color: AppColors.textPrimary),
 
-        bodySmall: TextStyle(
-          fontSize: 12,
-          color: AppColors.textSecondary,
-        ),
+        bodySmall: TextStyle(fontSize: 12, color: AppColors.textSecondary),
       ),
 
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -74,10 +68,7 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
           ),
-          textStyle: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-          ),
+          textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
         ),
       ),
 
@@ -85,9 +76,7 @@ class AppTheme {
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.primary,
           minimumSize: const Size(0, 48),
-          side: const BorderSide(
-            color: AppColors.border,
-          ),
+          side: const BorderSide(color: AppColors.border),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
           ),

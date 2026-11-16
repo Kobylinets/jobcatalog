@@ -66,7 +66,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget _fieldLabel(String value) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
-      child: Text(value, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.textPrimary)),
+      child: Text(
+        value,
+        style: const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          color: AppColors.textPrimary,
+        ),
+      ),
     );
   }
 
@@ -75,7 +82,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text('Реєстрація', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+        title: const Text(
+          'Реєстрація',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         foregroundColor: AppColors.textPrimary,
@@ -93,11 +103,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Створення акаунта',
-                        style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, color: AppColors.textPrimary)),
+                    const Text(
+                      'Створення акаунта',
+                      style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
                     const SizedBox(height: 10),
-                    const Text('Заповніть інформацію нижче, щоб створити свій профіль у Job Catalog.',
-                        style: TextStyle(fontSize: 14, color: AppColors.textSecondary)),
+                    const Text(
+                      'Заповніть інформацію нижче, щоб створити свій профіль у Job Catalog.',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
                     const SizedBox(height: 30),
                     _fieldLabel('Ім’я користувача'),
                     AppTextField(
@@ -128,11 +149,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       hintText: 'Повторіть пароль',
                       controller: _confirmController,
                       isPassword: true,
-                      validator: (value) => AuthValidators.confirmation(value, _passwordController.text),
+                      validator: (value) => AuthValidators.confirmation(
+                        value,
+                        _passwordController.text,
+                      ),
                     ),
                     const SizedBox(height: 14),
-                    const Text('Пароль повинен містити щонайменше 6 символів.',
-                        style: TextStyle(fontSize: 12, color: AppColors.textSecondary)),
+                    const Text(
+                      'Пароль повинен містити щонайменше 6 символів.',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
                     const SizedBox(height: 30),
                     AppPrimaryButton(
                       text: _isLoading ? 'ЗАЧЕКАЙТЕ...' : 'СТВОРИТИ АКАУНТ',
@@ -140,17 +169,35 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     if (_isLoading) ...[
                       const SizedBox(height: 16),
-                      const Center(child: CircularProgressIndicator(color: AppColors.primary)),
+                      const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primary,
+                        ),
+                      ),
                     ],
                     const SizedBox(height: 24),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('Вже маєте акаунт?', style: TextStyle(fontSize: 13, color: AppColors.textSecondary)),
+                        const Text(
+                          'Вже маєте акаунт?',
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
                         TextButton(
-                          onPressed: _isLoading ? null : () => Navigator.of(context).pop(),
-                          child: const Text('Увійти',
-                              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: AppColors.primary)),
+                          onPressed: _isLoading
+                              ? null
+                              : () => Navigator.of(context).pop(),
+                          child: const Text(
+                            'Увійти',
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.primary,
+                            ),
+                          ),
                         ),
                       ],
                     ),

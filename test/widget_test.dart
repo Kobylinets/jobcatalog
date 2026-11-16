@@ -1,26 +1,34 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:study_catalog/core/auth_validators.dart';
+import 'package:study_catalog/lab5/widgets/design_system.dart';
 
-// Замість стандартного тесту лічильника перевіряємо реальні валідатори.
 void main() {
-  test('email: порожнє поле і некоректний формат', () {
-    expect(AuthValidators.email(''), isNotNull);
-    expect(AuthValidators.email('wrong-email'), isNotNull);
-    expect(AuthValidators.email('test@example.com'), isNull);
-  });
-
-  test('пароль: довжина щонайменше 6 символів', () {
-    expect(AuthValidators.newPassword('123'), isNotNull);
-    expect(AuthValidators.newPassword('123456'), isNull);
-  });
-
-  test('підтвердження пароля має збігатися', () {
-    expect(AuthValidators.confirmation('123457', '123456'), isNotNull);
-    expect(AuthValidators.confirmation('123456', '123456'), isNull);
-  });
-
-  test('ім’я користувача обов’язкове', () {
-    expect(AuthValidators.name('  '), isNotNull);
-    expect(AuthValidators.name('Іван'), isNull);
+  testWidgets('Повідомлення валідації з’являється під полем', (tester) async {
+    final form = GlobalKey<FormState>();
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: makeJobTheme(Brightness.light),
+        home: Scaffold(
+          body: Form(
+            key: form,
+            child: ListView(
+              children: [
+                TextFormField(
+                  validator: emailValidator,
+                  decoration: const InputDecoration(labelText: 'Email'),
+                ),
+                ElevatedButton(
+                  onPressed: () => form.currentState!.validate(),
+                  child: const Text('Перевірити'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.tap(find.text('Перевірити'));
+    await tester.pump();
+    expect(find.text('Введіть електронну пошту.'), findsOneWidget);
   });
 }

@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+
 import '../theme/app_theme.dart';
 
 // Повторно використовувана кнопка застосунку.
@@ -40,10 +40,7 @@ class AppPrimaryButton extends StatelessWidget {
             ],
             Text(
               text,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-              ),
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
             ),
           ],
         ),

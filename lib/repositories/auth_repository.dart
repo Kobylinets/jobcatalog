@@ -22,10 +22,7 @@ class AuthRepository {
     await _logAnalytics('registration_completed');
   }
 
-  Future<void> signIn({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> signIn({required String email, required String password}) async {
     await _auth.signInWithEmailAndPassword(
       email: email.trim(),
       password: password,
