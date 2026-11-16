@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -13,9 +12,7 @@ class DashboardScreen extends StatelessWidget {
   void _openProfile(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute<void>(
-        builder: (context) => const ProfileScreen(),
-      ),
+      MaterialPageRoute<void>(builder: (context) => const ProfileScreen()),
     );
   }
 
@@ -42,12 +39,7 @@ class DashboardScreen extends StatelessWidget {
   }
 
   // Картка статистики.
-  Widget _statCard(
-    String number,
-    String label,
-    Color color,
-    IconData icon,
-  ) {
+  Widget _statCard(String number, String label, Color color, IconData icon) {
     return Expanded(
       child: Container(
         height: 112,
@@ -61,11 +53,7 @@ class DashboardScreen extends StatelessWidget {
             Positioned(
               right: 0,
               bottom: 0,
-              child: Icon(
-                icon,
-                size: 50,
-                color: Colors.white24,
-              ),
+              child: Icon(icon, size: 50, color: Colors.white24),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,10 +69,7 @@ class DashboardScreen extends StatelessWidget {
                 const SizedBox(height: 5),
                 Text(
                   label,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: Colors.white,
-                  ),
+                  style: const TextStyle(fontSize: 12, color: Colors.white),
                 ),
               ],
             ),
@@ -97,10 +82,7 @@ class DashboardScreen extends StatelessWidget {
   // Заголовок секції.
   Widget _sectionTitle(String title) {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 25,
-        bottom: 14,
-      ),
+      padding: const EdgeInsets.only(top: 25, bottom: 14),
       child: Text(
         title,
         style: const TextStyle(
@@ -119,15 +101,9 @@ class DashboardScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(
-          color: AppColors.border,
-        ),
+        border: Border.all(color: AppColors.border),
       ),
-      child: Icon(
-        icon,
-        size: 25,
-        color: AppColors.primary,
-      ),
+      child: Icon(icon, size: 25, color: AppColors.primary),
     );
   }
 
@@ -140,20 +116,12 @@ class DashboardScreen extends StatelessWidget {
         color: color,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Icon(
-        icon,
-        color: Colors.white,
-        size: 25,
-      ),
+      child: Icon(icon, color: Colors.white, size: 25),
     );
   }
 
   // Картка рекомендованої вакансії.
-  Widget _recommendedVacancy(
-    String title,
-    String city,
-    Color color,
-  ) {
+  Widget _recommendedVacancy(String title, String city, Color color) {
     return Container(
       width: 220,
       margin: const EdgeInsets.only(right: 12),
@@ -161,9 +129,7 @@ class DashboardScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(
-          color: AppColors.border,
-        ),
+        border: Border.all(color: AppColors.border),
       ),
       child: Row(
         children: [
@@ -257,10 +223,7 @@ class DashboardScreen extends StatelessWidget {
                       size: 15,
                     ),
                     SizedBox(width: 5),
-                    Text(
-                      '500–1 000 USD',
-                      style: TextStyle(fontSize: 11),
-                    ),
+                    Text('500–1 000 USD', style: TextStyle(fontSize: 11)),
                   ],
                 ),
                 const SizedBox(height: 5),
@@ -273,12 +236,7 @@ class DashboardScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: 5),
                     Expanded(
-                      child: Text(
-                        city,
-                        style: const TextStyle(
-                          fontSize: 11,
-                        ),
-                      ),
+                      child: Text(city, style: const TextStyle(fontSize: 11)),
                     ),
                   ],
                 ),
@@ -329,8 +287,7 @@ class DashboardScreen extends StatelessWidget {
                           children: [
                             const Expanded(
                               child: Column(
-                                crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     'Добрий ранок!',
@@ -355,10 +312,7 @@ class DashboardScreen extends StatelessWidget {
                             // Створення вакансії.
                             IconButton(
                               onPressed: () {
-                                _openPage(
-                                  context,
-                                  'Створення вакансії',
-                                );
+                                _openPage(context, 'Створення вакансії');
                               },
                               icon: const Icon(
                                 Icons.add_circle,
@@ -389,13 +343,10 @@ class DashboardScreen extends StatelessWidget {
                         // Демонстраційний рядок пошуку.
                         Container(
                           height: 48,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius:
-                                BorderRadius.circular(25),
+                            borderRadius: BorderRadius.circular(25),
                           ),
                           child: const Row(
                             children: [
@@ -420,15 +371,9 @@ class DashboardScreen extends StatelessWidget {
 
                   // Основний вміст дашборду.
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(
-                      20,
-                      24,
-                      20,
-                      25,
-                    ),
+                    padding: const EdgeInsets.fromLTRB(20, 24, 20, 25),
                     child: Column(
-                      crossAxisAlignment:
-                          CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // Статистика вакансій та інтерв'ю.
                         Row(
@@ -457,8 +402,7 @@ class DashboardScreen extends StatelessWidget {
                           padding: EdgeInsets.zero,
                           crossAxisCount: 4,
                           shrinkWrap: true,
-                          physics:
-                              const NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           childAspectRatio: 1.2,
                           children: [
                             _categoryIcon(Icons.bolt_outlined),
@@ -555,10 +499,7 @@ class DashboardScreen extends StatelessWidget {
           destinations: const [
             NavigationDestination(
               icon: Icon(Icons.home_outlined),
-              selectedIcon: Icon(
-                Icons.home,
-                color: AppColors.primary,
-              ),
+              selectedIcon: Icon(Icons.home, color: AppColors.primary),
               label: 'Дім',
             ),
 

@@ -36,7 +36,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       await showAppMessage(
         context,
         title: 'Відновлення пароля',
-        message: 'Якщо для цієї пошти існує акаунт, '
+        message:
+            'Якщо для цієї пошти існує акаунт, '
             'ви отримаєте лист із посиланням для скидання пароля. '
             'Перевірте також папку «Спам».',
       );
@@ -84,22 +85,42 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         color: const Color(0xFFE9DFFF),
                         borderRadius: BorderRadius.circular(50),
                       ),
-                      child: const Icon(Icons.mark_email_read_outlined, size: 48, color: AppColors.primary),
+                      child: const Icon(
+                        Icons.mark_email_read_outlined,
+                        size: 48,
+                        color: AppColors.primary,
+                      ),
                     ),
                     const SizedBox(height: 30),
-                    const Text('Забули пароль?',
-                        style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, color: AppColors.textPrimary)),
+                    const Text(
+                      'Забули пароль?',
+                      style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
                     const SizedBox(height: 14),
                     const Text(
                       'Введіть електронну пошту, пов’язану з вашим акаунтом, '
                       'щоб отримати лист для відновлення пароля.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 14, height: 1.5, color: AppColors.textSecondary),
+                      style: TextStyle(
+                        fontSize: 14,
+                        height: 1.5,
+                        color: AppColors.textSecondary,
+                      ),
                     ),
                     const SizedBox(height: 36),
                     const Align(
                       alignment: Alignment.centerLeft,
-                      child: Text('Електронна пошта', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+                      child: Text(
+                        'Електронна пошта',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 10),
                     AppTextField(
@@ -120,7 +141,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     ],
                     const SizedBox(height: 24),
                     TextButton.icon(
-                      onPressed: _isLoading ? null : () => Navigator.of(context).pop(),
+                      onPressed: _isLoading
+                          ? null
+                          : () => Navigator.of(context).pop(),
                       icon: const Icon(Icons.arrow_back, size: 18),
                       label: const Text('Повернутися до входу'),
                     ),
@@ -142,7 +165,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             child: Text(
                               'Лист надсилається через Firebase Authentication. '
                               'Для отримання посилання потрібен доступ до поштової скриньки.',
-                              style: TextStyle(fontSize: 12, height: 1.5, color: AppColors.textSecondary),
+                              style: TextStyle(
+                                fontSize: 12,
+                                height: 1.5,
+                                color: AppColors.textSecondary,
+                              ),
                             ),
                           ),
                         ],
