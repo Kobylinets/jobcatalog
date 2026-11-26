@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'firebase_options.dart';
 import 'repositories/auth_repository.dart';
@@ -13,12 +14,22 @@ import 'lab5/screens/auth_pages.dart';
 import 'lab5/screens/home_tabs.dart';
 import 'lab5/state/auth_controller.dart';
 import 'lab5/state/catalog_controller.dart';
+import 'lab6/repositories/cloud_catalog_repository.dart';
+import 'lab6/state/profile_media_controller.dart';
 import 'lab5/state/theme_controller.dart';
 import 'lab5/widgets/design_system.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // ЛР6: Supabase використовується ЛИШЕ для медіафайлів.
+  // Firebase Authentication, Firestore, Analytics та Crashlytics збережено.
+  const supabaseUrl = String.fromEnvironment('SUPABASE_URL');
+  const supabaseKey = String.fromEnvironment('SUPABASE_PUBLISHABLE_KEY');
+  if (supabaseUrl.isNotEmpty && supabaseKey.isNotEmpty) {
+    await Supabase.initialize(url: supabaseUrl, publishableKey: supabaseKey);
+  }
 
   // Збережено інтеграції Analytics / Crashlytics із лабораторної №4.
   await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
@@ -35,7 +46,7 @@ Future<void> main() async {
 
   final theme = ThemeController();
   await theme.load();
-  final catalog = CatalogController();
+  final catalog = CatalogController(repository: CloudCatalogRepository());
   // Дані каталогу завантажуються для поточного Firebase UID в AuthGate.
 
   runApp(
@@ -43,6 +54,9 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider<ThemeController>.value(value: theme),
         ChangeNotifierProvider<CatalogController>.value(value: catalog),
+        ChangeNotifierProvider<ProfileMediaController>(
+          create: (_) => ProfileMediaController(),
+        ),
         ChangeNotifierProvider<AuthController>(
           create: (_) => AuthController(AuthRepository()),
         ),

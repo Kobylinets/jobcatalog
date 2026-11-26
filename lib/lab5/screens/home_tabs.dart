@@ -126,6 +126,37 @@ class DashboardPage extends StatelessWidget {
       ..sort((a, b) => a.when.compareTo(b.when));
     return CustomScrollView(
       slivers: [
+        if (state.cloudSyncing || state.cloudError != null)
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 8, 20, 4),
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.cloud_sync_outlined),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          state.cloudSyncing
+                              ? 'Підключення до Firestore…'
+                              : state.cloudError!,
+                        ),
+                      ),
+                      if (state.cloudError != null)
+                        TextButton(
+                          onPressed: () =>
+                              context.read<CatalogController>().retryCloud(),
+                          child: const Text('Повторити'),
+                        ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 18, 20, 12),

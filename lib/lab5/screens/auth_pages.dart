@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../../lab6/state/profile_media_controller.dart';
 
 import '../state/auth_controller.dart';
 import '../state/theme_controller.dart';
@@ -458,6 +461,67 @@ class _ProfilePageState extends State<ProfilePage> {
                     'Фотографія профілю',
                     style: Theme.of(context).textTheme.titleMedium
                         ?.copyWith(fontWeight: FontWeight.w800),
+                  ),
+                  Consumer<ProfileMediaController>(
+                    builder: (context, media, _) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: [
+                            OutlinedButton.icon(
+                              onPressed: media.uploading
+                                  ? null
+                                  : () async {
+                                      final didUpload = await context
+                                          .read<ProfileMediaController>()
+                                          .pickAndUpload(
+                                            context.read<AuthController>(),
+                                            source: ImageSource.gallery,
+                                          );
+                                      if (!mounted) return;
+                                      if (didUpload) {
+                                        photo.text = auth.photoUrl ?? '';
+                                      }
+                                    },
+                              icon: const Icon(Icons.photo_library_outlined),
+                              label: const Text('Обрати фото'),
+                            ),
+                            OutlinedButton.icon(
+                              onPressed: media.uploading
+                                  ? null
+                                  : () async {
+                                      final didUpload = await context
+                                          .read<ProfileMediaController>()
+                                          .pickAndUpload(
+                                            context.read<AuthController>(),
+                                            source: ImageSource.camera,
+                                          );
+                                      if (!mounted) return;
+                                      if (didUpload) {
+                                        photo.text = auth.photoUrl ?? '';
+                                      }
+                                    },
+                              icon: const Icon(Icons.camera_alt_outlined),
+                              label: const Text('Зробити фото'),
+                            ),
+                          ],
+                        ),
+                        if (media.uploading) const LinearProgressIndicator(),
+                        if (media.error != null)
+                          Text(
+                            media.error!,
+                            style: const TextStyle(color: Colors.red),
+                          ),
+                        if (media.success != null)
+                          Text(
+                            media.success!,
+                            style: const TextStyle(color: Colors.green),
+                          ),
+                        const SizedBox(height: 12),
+                      ],
+                    ),
                   ),
                   const FieldLabel('HTTPS-посилання на зображення'),
                   TextFormField(
